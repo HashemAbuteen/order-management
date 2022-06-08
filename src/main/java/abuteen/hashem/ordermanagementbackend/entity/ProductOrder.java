@@ -12,7 +12,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Entity
 @Table( name = "product_order_tbl")
-public class productOrder implements Serializable {
+public class ProductOrder implements Serializable {
     @Id
     @GeneratedValue
     private int id;
