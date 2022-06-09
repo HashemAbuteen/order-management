@@ -1,8 +1,13 @@
 package abuteen.hashem.ordermanagementbackend.controller;
 
+import abuteen.hashem.ordermanagementbackend.dto.CustomerDto;
 import abuteen.hashem.ordermanagementbackend.dto.ProductDto;
+import abuteen.hashem.ordermanagementbackend.dto.StockDto;
 import abuteen.hashem.ordermanagementbackend.entity.Product;
+import abuteen.hashem.ordermanagementbackend.security.UpdatePasswordRequest;
+import abuteen.hashem.ordermanagementbackend.service.CustomerService;
 import abuteen.hashem.ordermanagementbackend.service.ProductService;
+import abuteen.hashem.ordermanagementbackend.service.StockService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +24,12 @@ public class EmployeeController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private StockService stockService;
+
+    @Autowired
+    private CustomerService customerService;
 
     @PostMapping("/product")
     public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto productDto){
@@ -44,6 +55,64 @@ public class EmployeeController {
     @PutMapping("/product")
     public ResponseEntity<ProductDto> updateProduct(@RequestBody ProductDto productDto){
         return ResponseEntity.ok(productService.update(productDto)) ;
+    }
+
+    @PostMapping("/stock")
+    public ResponseEntity<StockDto> createStock(@RequestBody StockDto stockDto){
+        return ResponseEntity.ok(stockService.createStock(stockDto));
+    }
+
+    @GetMapping("/stock")
+    public ResponseEntity<List<StockDto>> getAllStocks(){
+        return ResponseEntity.ok(stockService.getAll());
+    }
+
+    @GetMapping("/stock/{id}")
+    public ResponseEntity<StockDto> getStockById(@PathVariable int id){
+        return ResponseEntity.ok(stockService.getByID(id));
+    }
+
+    @DeleteMapping("/stock/{id}")
+    public ResponseEntity<Integer> deleteStock(@PathVariable int id){
+        stockService.deleteStock(id);
+        return new ResponseEntity<>(id , HttpStatus.OK);
+    }
+
+    @PutMapping("/stock")
+    public ResponseEntity<StockDto> updateStock(@RequestBody StockDto stockDto){
+        return ResponseEntity.ok(stockService.update(stockDto)) ;
+    }
+
+    @PostMapping("/customer")
+    public ResponseEntity<CustomerDto> createCustomer(@RequestBody CustomerDto customerDto){
+        return ResponseEntity.ok(customerService.create(customerDto));
+    }
+
+    @GetMapping("/customer")
+    public ResponseEntity<List<CustomerDto>> getAllCustomers(){
+        return ResponseEntity.ok(customerService.getAll());
+    }
+
+    @GetMapping("/customer/{id}")
+    public ResponseEntity<CustomerDto> getCustomerById(@PathVariable int id){
+        return ResponseEntity.ok(customerService.getByID(id));
+    }
+
+    @DeleteMapping("/customer/{id}")
+    public ResponseEntity deleteCustomer(@PathVariable int id){
+        customerService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PutMapping("/customer")
+    public ResponseEntity<CustomerDto> updateCustomer(@RequestBody CustomerDto customerDto){
+        return ResponseEntity.ok(customerService.update(customerDto)) ;
+    }
+
+    @PutMapping("/customer/{id}")
+    public ResponseEntity setCustomerPassword(@RequestBody UpdatePasswordRequest request , @PathVariable int id){
+        customerService.setPassword(id , request);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/test")

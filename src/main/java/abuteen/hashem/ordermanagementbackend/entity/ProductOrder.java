@@ -21,10 +21,6 @@ public class ProductOrder implements Serializable {
     @JoinColumn(name = "productId" , referencedColumnName = "id")
     private Product product;
 
-    @ManyToOne
-    @JoinColumn(name = "orderId" , referencedColumnName = "id")
-    private Order order;
-
     private int quantity;
     private double price;
     private double vat;

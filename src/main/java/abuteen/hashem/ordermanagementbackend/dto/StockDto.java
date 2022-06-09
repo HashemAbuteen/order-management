@@ -1,23 +1,22 @@
 package abuteen.hashem.ordermanagementbackend.dto;
 
+import abuteen.hashem.ordermanagementbackend.entity.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerDto {
+public class StockDto {
     private int id;
-    private String userName;
-    private String password;
 
-    private String firstName;
-    private String LastName;
+    private ProductDto productDto;
 
-    private Date bornAt;
-    private boolean active;
+    private int quantity;
 
+    private Date updatedAt;
 }

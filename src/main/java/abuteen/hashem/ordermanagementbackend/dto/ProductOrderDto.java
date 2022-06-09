@@ -19,8 +19,6 @@ public class ProductOrderDto {
 
     private Product product;
 
-    private Order order;
-
     private int quantity;
     private double price;
     private double vat;

@@ -36,7 +36,7 @@ public class MyUserDetailsService implements UserDetailsService {
         }
         else {
             Optional<Customer> customer = customerRepository.findByUserName(userName);
-            if(customer.isPresent()) {
+            if(customer.isPresent() && customer.get().isActive()) {
                 List<SimpleGrantedAuthority> authorities = new ArrayList<>();
                 authorities.add(new SimpleGrantedAuthority("ROLE_CUSTOMER"));
                 return new User(customer.get().getUserName(), customer.get().getPassword(), authorities);

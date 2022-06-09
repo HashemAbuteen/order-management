@@ -2,7 +2,7 @@ package abuteen.hashem.ordermanagementbackend.service.impl;
 
 import abuteen.hashem.ordermanagementbackend.dto.ProductDto;
 import abuteen.hashem.ordermanagementbackend.entity.Product;
-import abuteen.hashem.ordermanagementbackend.exception.ProductNotFoundException;
+import abuteen.hashem.ordermanagementbackend.exception.NotFoundException;
 import abuteen.hashem.ordermanagementbackend.repository.ProductRepository;
 import abuteen.hashem.ordermanagementbackend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +41,8 @@ public class ProductServiceImpl implements ProductService {
             product.setActive(false);
             productRepository.save(product);
         }
-        throw new ProductNotFoundException();
+        else
+        throw new NotFoundException();
     }
 
     @Override
@@ -70,7 +71,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductDto getByID(int id) {
         if(!productRepository.existsById(id)){
-            throw new ProductNotFoundException();
+            throw new NotFoundException();
         }
         return mapToProductDto(productRepository.getReferenceById(id));
     }
@@ -78,7 +79,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductDto update(ProductDto productDto) {
         if(!productRepository.existsById(productDto.getId())){
-            throw new ProductNotFoundException();
+            throw new NotFoundException();
         }
         Product product = productRepository.getReferenceById(productDto.getId());
         if(productDto.getPrice()!=0){
@@ -98,7 +99,7 @@ public class ProductServiceImpl implements ProductService {
         return mapToProductDto(product);
     }
 
-    ProductDto mapToProductDto (Product product){
+    public static ProductDto mapToProductDto (Product product){
         ProductDto productDto = new ProductDto();
         productDto.setActive(product.isActive());
         productDto.setPrice(product.getPrice());

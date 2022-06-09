@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -23,4 +24,7 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "customerId" , referencedColumnName = "id")
     private Customer customer;
+
+    @OneToMany
+    private List<ProductOrder> productOrder;
 }
