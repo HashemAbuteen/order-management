@@ -1,0 +1,295 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Order-Management",
+		"_postman_id": "9fb27579-e5c8-69ba-f28a-fe6c6c7cbda8",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authinticate",
+			"request": {
+				"url": "localhost:8080/authenticate",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userName\":\"employee1\",\n\t\"password\":\"employee123\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Authinticate Customer",
+			"request": {
+				"url": "localhost:8080/authenticate",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userName\":\"employee1\",\n\t\"password\":\"employee123\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Test",
+			"request": {
+				"url": "localhost:8080/employee-api/test",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbXBsb3llZTEiLCJleHAiOjE2NTQ3NjMyNjUsImlhdCI6MTY1NDcyNzI2NX0.LBxX3A55QTGtdRi1Povy8idlwLYZo5wc0YCpyJjLqHI",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Products",
+			"request": {
+				"url": "localhost:8080/employee-api/product",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbXBsb3llZTEiLCJleHAiOjE2NTQ3NjMyNjUsImlhdCI6MTY1NDcyNzI2NX0.LBxX3A55QTGtdRi1Povy8idlwLYZo5wc0YCpyJjLqHI",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"url": "localhost:8080/employee-api/product",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbXBsb3llZTEiLCJleHAiOjE2NTQ3NjMyNjUsImlhdCI6MTY1NDcyNzI2NX0.LBxX3A55QTGtdRi1Povy8idlwLYZo5wc0YCpyJjLqHI",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"slug\": \"cola-slug2\",\n    \"name\": \"Cola2\",\n    \"reference\": \"cola-referance2\",\n    \"price\": 6,\n    \"vat\": 0.85\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get product by id",
+			"request": {
+				"url": "localhost:8080/employee-api/product/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbXBsb3llZTEiLCJleHAiOjE2NTQ3NjMyNjUsImlhdCI6MTY1NDcyNzI2NX0.LBxX3A55QTGtdRi1Povy8idlwLYZo5wc0YCpyJjLqHI",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete product by id",
+			"request": {
+				"url": "localhost:8080/employee-api/product/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbXBsb3llZTEiLCJleHAiOjE2NTQ3NjMyNjUsImlhdCI6MTY1NDcyNzI2NX0.LBxX3A55QTGtdRi1Povy8idlwLYZo5wc0YCpyJjLqHI",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create a product",
+			"request": {
+				"url": "localhost:8080/employee-api/product",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbXBsb3llZTEiLCJleHAiOjE2NTQ3NjMyNjUsImlhdCI6MTY1NDcyNzI2NX0.LBxX3A55QTGtdRi1Povy8idlwLYZo5wc0YCpyJjLqHI",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"Cola\",\n\t\"reference\" : \"cola-referance\",\n\t\"slug\" : \"cola-slug\",\n\t\"price\" : 5,\n\t\"stockable\" : true\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Stock",
+			"request": {
+				"url": "localhost:8080/employee-api/stock",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbXBsb3llZTEiLCJleHAiOjE2NTQ3NjMyNjUsImlhdCI6MTY1NDcyNzI2NX0.LBxX3A55QTGtdRi1Povy8idlwLYZo5wc0YCpyJjLqHI",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Stock",
+			"request": {
+				"url": "localhost:8080/employee-api/stock",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbXBsb3llZTEiLCJleHAiOjE2NTQ3NjMyNjUsImlhdCI6MTY1NDcyNzI2NX0.LBxX3A55QTGtdRi1Povy8idlwLYZo5wc0YCpyJjLqHI",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 2,\n    \"quantity\" :10\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get stock by id",
+			"request": {
+				"url": "localhost:8080/employee-api/stock/2",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbXBsb3llZTEiLCJleHAiOjE2NTQ3NjMyNjUsImlhdCI6MTY1NDcyNzI2NX0.LBxX3A55QTGtdRi1Povy8idlwLYZo5wc0YCpyJjLqHI",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete stock by id",
+			"request": {
+				"url": "localhost:8080/employee-api/stock/3",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbXBsb3llZTEiLCJleHAiOjE2NTQ3NjMyNjUsImlhdCI6MTY1NDcyNzI2NX0.LBxX3A55QTGtdRi1Povy8idlwLYZo5wc0YCpyJjLqHI",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create a stock",
+			"request": {
+				"url": "localhost:8080/employee-api/stock",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbXBsb3llZTEiLCJleHAiOjE2NTQ3NjMyNjUsImlhdCI6MTY1NDcyNzI2NX0.LBxX3A55QTGtdRi1Povy8idlwLYZo5wc0YCpyJjLqHI",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"productDto\" : {\n\t\t\"id\" : 1\n\t},\n\t\"quantity\" : 50\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get my cusomer profile",
+			"request": {
+				"url": "localhost:8080/customer-api/info",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJheW1hbjExIiwiZXhwIjoxNjU0NzkxNjQ3LCJpYXQiOjE2NTQ3NTU2NDd9._jB_w0dba_f8Ttb_ZDLmBcbC-d6essQzpJ_Uza1vtpI",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
