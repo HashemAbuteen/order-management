@@ -17,7 +17,7 @@ import javax.persistence.ManyToOne;
 public class ProductOrderDto {
     private int id;
 
-    private Product product;
+    private ProductDto productDto;
 
     private int quantity;
     private double price;

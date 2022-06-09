@@ -3,12 +3,14 @@ package abuteen.hashem.ordermanagementbackend.controller;
 import abuteen.hashem.ordermanagementbackend.dto.CustomerDto;
 import abuteen.hashem.ordermanagementbackend.dto.OrderDto;
 import abuteen.hashem.ordermanagementbackend.dto.ProductDto;
+import abuteen.hashem.ordermanagementbackend.dto.ProductOrderDto;
 import abuteen.hashem.ordermanagementbackend.entity.Customer;
 import abuteen.hashem.ordermanagementbackend.entity.Product;
 import abuteen.hashem.ordermanagementbackend.repository.CustomerRepository;
 import abuteen.hashem.ordermanagementbackend.security.UpdatePasswordRequest;
 import abuteen.hashem.ordermanagementbackend.service.CustomerService;
 import abuteen.hashem.ordermanagementbackend.service.OrderService;
+import abuteen.hashem.ordermanagementbackend.service.ProductOrderService;
 import abuteen.hashem.ordermanagementbackend.service.ProductService;
 import org.aspectj.weaver.ast.Or;
 import org.slf4j.Logger;
@@ -30,6 +32,9 @@ public class CustomerController {
 
     @Autowired
     OrderService orderService;
+
+    @Autowired
+    ProductOrderService productOrderService;
 
     @GetMapping("/info")
     public ResponseEntity<CustomerDto> getMyInfo(){
@@ -72,5 +77,31 @@ public class CustomerController {
     public ResponseEntity<OrderDto> getMyOrderById (@PathVariable int id){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return ResponseEntity.ok(orderService.getByIdAndCustomer(id,auth.getName()));
+    }
+
+    @PostMapping("/order/{id}/product")
+    public ResponseEntity<ProductOrderDto> addProduct(@PathVariable int orderId , @RequestBody ProductOrderDto productOrderDto){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return ResponseEntity.ok(productOrderService.add(auth.getName() , orderId,productOrderDto));
+    }
+
+    @DeleteMapping("/order/{orderId}/product/{productOrderId}")
+    public ResponseEntity deleteProduct(@PathVariable int orderId , @PathVariable int productOrderId){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        productOrderService.delete(auth.getName() , orderId , productOrderId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("order/{id}/product")
+    public ResponseEntity<List<ProductOrderDto>> getOrderProducts(@PathVariable int id){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        productOrderService.getOrderProducts(auth.getName() , id);
+        return ResponseEntity.ok(productOrderService.getOrderProducts(auth.getName() , id));
+    }
+
+    @PutMapping("order/{orderId}/product/")
+    public ResponseEntity<ProductOrderDto> editProductOrder(@PathVariable int orderId, @RequestBody ProductOrderDto productOrderDto){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return ResponseEntity.ok(productOrderService.editOrderProducts(auth.getName() , orderId , productOrderDto));
     }
 }
