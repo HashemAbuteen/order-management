@@ -4,25 +4,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "customer_tbl")
-public class Customer {
+@Table(name = "employee_tbl")
+public class Employee {
     @Id
     @GeneratedValue
     private int id;
-
-    private String firstName;
-    private String LastName;
+    private String name;
     private String userName;
     private String password;
-
-    @Temporal(TemporalType.DATE)
-    private Date bornAt;
 
 }

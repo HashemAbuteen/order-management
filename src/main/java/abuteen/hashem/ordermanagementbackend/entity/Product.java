@@ -1,6 +1,7 @@
 package abuteen.hashem.ordermanagementbackend.entity;
 
 
+import abuteen.hashem.ordermanagementbackend.dto.ProductDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,8 +25,10 @@ public class Product implements Serializable {
     private String slug;
     private String name;
     private String reference;
-    private float price;
-    private float vat;
+    private double price;
+    private double vat;
     private boolean stockable;
+    private boolean isActive;
+
 
 }

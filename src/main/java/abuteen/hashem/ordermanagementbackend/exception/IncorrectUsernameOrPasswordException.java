@@ -1,4 +1,4 @@
-package abuteen.hashem.ordermanagementbackend.security;
+package abuteen.hashem.ordermanagementbackend.exception;
 
 public class IncorrectUsernameOrPasswordException extends RuntimeException{
     public IncorrectUsernameOrPasswordException() {

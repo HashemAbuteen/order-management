@@ -1,5 +1,9 @@
 package abuteen.hashem.ordermanagementbackend.security;
 
+import abuteen.hashem.ordermanagementbackend.entity.Customer;
+import abuteen.hashem.ordermanagementbackend.entity.Employee;
+import abuteen.hashem.ordermanagementbackend.repository.CustomerRepository;
+import abuteen.hashem.ordermanagementbackend.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,21 +21,29 @@ import java.util.Optional;
 public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
-    LoginUserRepository userRepository;
+    EmployeeRepository employeeRepository;
+    @Autowired
+    CustomerRepository customerRepository;
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        Optional<LoginUser> user = userRepository.findByUserName(userName);
+        Optional<Employee> employee = employeeRepository.findByUserName(userName);
 
-        if(user.isPresent()){
+        if(employee.isPresent()){
             List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-            Arrays.stream(user.get().getRoles().split(",")).forEach(authority ->
-                    authorities.add(new SimpleGrantedAuthority(authority))
-            );
-            return new User(user.get().getUserName(), user.get().getPassword(), authorities);
+            authorities.add(new SimpleGrantedAuthority("ROLE_EMPLOYEE"));
+            return new User(employee.get().getUserName(), employee.get().getPassword(), authorities);
         }
         else {
-            throw new UsernameNotFoundException("User " + userName + " does not exist...");
+            Optional<Customer> customer = customerRepository.findByUserName(userName);
+            if(customer.isPresent()) {
+                List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+                authorities.add(new SimpleGrantedAuthority("ROLE_CUSTOMER"));
+                return new User(customer.get().getUserName(), customer.get().getPassword(), authorities);
+            }
+            else{
+                    throw new UsernameNotFoundException("User " + userName + " does not exist...");
+                }
         }
     }
 }

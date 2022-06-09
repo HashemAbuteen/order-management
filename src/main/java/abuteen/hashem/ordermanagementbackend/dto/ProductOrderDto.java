@@ -22,6 +22,6 @@ public class ProductOrderDto {
     private Order order;
 
     private int quantity;
-    private float price;
-    private float vat;
+    private double price;
+    private double vat;
 }

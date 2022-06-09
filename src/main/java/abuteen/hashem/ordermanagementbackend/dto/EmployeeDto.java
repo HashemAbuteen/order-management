@@ -7,14 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductDto {
+public class EmployeeDto {
     private int id;
-
-    private String slug;
     private String name;
-    private String reference;
-    private double price;
-    private double vat;
-    private boolean stockable;
-    private boolean isActive;
+    private String userName;
+    private String password;
 }
