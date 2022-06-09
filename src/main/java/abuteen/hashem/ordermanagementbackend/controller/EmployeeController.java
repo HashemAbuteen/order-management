@@ -1,11 +1,13 @@
 package abuteen.hashem.ordermanagementbackend.controller;
 
 import abuteen.hashem.ordermanagementbackend.dto.CustomerDto;
+import abuteen.hashem.ordermanagementbackend.dto.OrderDto;
 import abuteen.hashem.ordermanagementbackend.dto.ProductDto;
 import abuteen.hashem.ordermanagementbackend.dto.StockDto;
 import abuteen.hashem.ordermanagementbackend.entity.Product;
 import abuteen.hashem.ordermanagementbackend.security.UpdatePasswordRequest;
 import abuteen.hashem.ordermanagementbackend.service.CustomerService;
+import abuteen.hashem.ordermanagementbackend.service.OrderService;
 import abuteen.hashem.ordermanagementbackend.service.ProductService;
 import abuteen.hashem.ordermanagementbackend.service.StockService;
 import org.slf4j.Logger;
@@ -30,6 +32,9 @@ public class EmployeeController {
 
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private OrderService orderService;
 
     @PostMapping("/product")
     public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto productDto){
@@ -114,6 +119,24 @@ public class EmployeeController {
         customerService.setPassword(id , request);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping("/order/{id}")
+    public ResponseEntity<OrderDto> getOrderById(@PathVariable int id){
+        return ResponseEntity.ok(orderService.getByID(id));
+    }
+
+    @GetMapping("/order")
+    public ResponseEntity<List<OrderDto>> getAllOrders(){
+        return ResponseEntity.ok(orderService.getAll());
+    }
+
+    @DeleteMapping("/order/{id}")
+    public ResponseEntity deleteOrder(@PathVariable int id){
+        orderService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
 
     @GetMapping("/test")
     public ResponseEntity<String> test(){

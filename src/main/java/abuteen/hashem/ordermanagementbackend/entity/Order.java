@@ -27,4 +27,5 @@ public class Order {
 
     @OneToMany
     private List<ProductOrder> productOrder;
+    private boolean deleted;
 }

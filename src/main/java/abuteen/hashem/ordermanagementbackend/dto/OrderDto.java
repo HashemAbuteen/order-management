@@ -21,4 +21,5 @@ public class OrderDto {
     private Customer customer;
 
     private List<ProductOrder> productOrderList;
+    private boolean deleted;
 }
