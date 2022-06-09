@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * The type Customer.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

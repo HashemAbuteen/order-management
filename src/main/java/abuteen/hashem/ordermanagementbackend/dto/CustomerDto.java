@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+/**
+ * The type Customer dto.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

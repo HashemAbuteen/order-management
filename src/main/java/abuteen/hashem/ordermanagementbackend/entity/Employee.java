@@ -9,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * The type Employee.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

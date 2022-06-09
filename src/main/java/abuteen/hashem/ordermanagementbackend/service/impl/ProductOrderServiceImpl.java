@@ -12,7 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
+/**
+ * The type Product order service.
+ */
 public class ProductOrderServiceImpl implements ProductOrderService {
+    /**
+     * The Vat.
+     */
     final double vat = 0.17;
     @Autowired
     private ProductOrderRepository productOrderRepository;

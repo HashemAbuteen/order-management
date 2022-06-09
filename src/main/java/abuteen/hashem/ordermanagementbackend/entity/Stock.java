@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * The type Stock.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

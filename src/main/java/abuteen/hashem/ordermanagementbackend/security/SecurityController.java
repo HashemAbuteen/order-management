@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * The type Security controller.
+ */
 @RestController
 public class SecurityController {
 
@@ -24,6 +27,12 @@ public class SecurityController {
     private JwtUtil jwtUtil;
 
 
+    /**
+     * Create authentication token response entity.
+     *
+     * @param authenticationRequest the authentication request
+     * @return the response entity
+     */
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) {
         try {

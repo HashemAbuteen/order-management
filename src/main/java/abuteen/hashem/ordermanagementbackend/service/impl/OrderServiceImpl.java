@@ -18,6 +18,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The type Order service.
+ */
 @Service
 public class OrderServiceImpl implements OrderService {
 

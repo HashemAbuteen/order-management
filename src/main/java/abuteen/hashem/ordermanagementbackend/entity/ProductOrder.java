@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
+/**
+ * The type Product order.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

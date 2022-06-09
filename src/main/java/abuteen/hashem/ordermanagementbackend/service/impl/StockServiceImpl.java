@@ -18,10 +18,19 @@ import java.util.List;
 
 import static abuteen.hashem.ordermanagementbackend.service.impl.ProductServiceImpl.mapToProductDto;
 
+/**
+ * The type Stock service.
+ */
 @Service
 public class StockServiceImpl implements StockService {
+    /**
+     * The Stock repository.
+     */
     @Autowired
     StockRepository stockRepository;
+    /**
+     * The Product repository.
+     */
     @Autowired
     ProductRepository productRepository;
 

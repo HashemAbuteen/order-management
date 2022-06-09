@@ -11,8 +11,14 @@ import org.springframework.stereotype.Service;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * The type Product service.
+ */
 @Service
 public class ProductServiceImpl implements ProductService {
+    /**
+     * The Product repository.
+     */
     @Autowired
     ProductRepository productRepository;
     private final double vat = 0.17;
@@ -99,6 +105,12 @@ public class ProductServiceImpl implements ProductService {
         return mapToProductDto(product);
     }
 
+    /**
+     * Map to product dto product dto.
+     *
+     * @param product the product
+     * @return the product dto
+     */
     public static ProductDto mapToProductDto (Product product){
         ProductDto productDto = new ProductDto();
         productDto.setActive(product.isActive());

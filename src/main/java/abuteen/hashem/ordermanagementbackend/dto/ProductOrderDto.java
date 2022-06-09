@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+/**
+ * The type Product order dto.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

@@ -18,6 +18,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The type Customer service.
+ */
 @Service
 public class CustomerServiceImpl implements CustomerService {
     @Autowired

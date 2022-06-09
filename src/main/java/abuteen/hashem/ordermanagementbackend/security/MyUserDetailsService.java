@@ -17,11 +17,20 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The type My user details service.
+ */
 @Service
 public class MyUserDetailsService implements UserDetailsService {
 
+    /**
+     * The Employee repository.
+     */
     @Autowired
     EmployeeRepository employeeRepository;
+    /**
+     * The Customer repository.
+     */
     @Autowired
     CustomerRepository customerRepository;
 
